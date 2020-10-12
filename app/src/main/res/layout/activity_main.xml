@@ -1,0 +1,109 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+        name="viewmodel"
+        type="com.e.myapplication.viewmodel.HomeViewModel" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#43BA3A">
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/ll_firstConversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/et_firstConversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="5"
+                    android:textColor="#43BA3A"
+                    android:hint="From"
+                    android:inputType="number"
+                    android:text="@={viewmodel.convertValute}"
+                    />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_firstConversion"
+                    android:entries="@{viewmodel.charcodes}"
+                    android:selectedItemPosition="@={viewmodel.spinnerSelectedPositionFirst}"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_secondConversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/et_secondConversion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contextClickable="false"
+                    android:ems="5"
+                    android:hint="To"
+                    android:textColor="#43BA3A"
+                    android:inputType="textPersonName"
+                    android:text="@{viewmodel.convertedValute}" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_secondConversion"
+                    android:entries="@{viewmodel.charcodes}"
+                    android:selectedItemPosition="@={viewmodel.spinnerSelectedPositionSecond}"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#43BA3A"
+                android:onClick="@{()->viewmodel.getValute()}"
+                android:text="Convert"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Currency Converter"
+            android:textSize="24dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#43BA3A"/>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+</layout>
